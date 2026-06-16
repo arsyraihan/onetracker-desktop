@@ -6,7 +6,7 @@ on:
 
 jobs:
   build-linux:
-    runs-on: ubuntu-latest # Meminjam mesin Linux Ubuntu asli dari GitHub
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
@@ -21,14 +21,12 @@ jobs:
         run: npm install
 
       - name: Build Linux App (.AppImage & .deb)
-        # Menjalankan script Linux, dengan -p never agar tidak minta token
-        run: npm run build:linux -p never
+        run: npm run build:linux
 
       - name: Upload Linux Artifact
         uses: actions/upload-artifact@v4
         with:
           name: OneTracker-Linux-Release
-          # Mengambil kedua format (AppImage dan deb)
           path: |
             dist/*.AppImage
             dist/*.deb
