@@ -43,5 +43,9 @@
       "icon": "build/app-icon.png",
       "category": "Office"
     }
+  },
+  "devDependencies": {
+    "electron": "^42.4.0",
+    "electron-builder": "^26.15.3"
   }
 }
