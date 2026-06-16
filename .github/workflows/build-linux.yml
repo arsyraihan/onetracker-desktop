@@ -1,0 +1,34 @@
+name: Build Linux OneTracker App
+
+on:
+  push:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest # Meminjam mesin Linux Ubuntu asli dari GitHub
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Linux App (.AppImage & .deb)
+        # Menjalankan script Linux, dengan -p never agar tidak minta token
+        run: npm run build:linux -p never
+
+      - name: Upload Linux Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: OneTracker-Linux-Release
+          # Mengambil kedua format (AppImage dan deb)
+          path: |
+            dist/*.AppImage
+            dist/*.deb
