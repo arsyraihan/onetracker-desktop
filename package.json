@@ -10,7 +10,7 @@
     "build:mac": "electron-builder --mac -p never",
     "build:all": "electron-builder -wml"
   },
-  "author": "NasPad Team",
+  "author": "NasPad Team <arsyraihanlamavapramudia@gmail.com>",
   "license": "ISC",
   "build": {
     "appId": "com.naspad.onetracker",
